@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myhttp
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      type: httpd
+  template:
+    metadata:
+      name: pod1
+      labels:
+        type: httpd
+    spec:
+      containers:
+        - name: mycontainer
+          image: pravin1015/mysite
+          ports:
+            - name: http
+              containerPort: 80
